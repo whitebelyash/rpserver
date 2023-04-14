@@ -1,0 +1,7 @@
+name: RPServer
+version: '${project.version}'
+main: ru.whbex.rpserver.Main
+api-version: 1.19
+prefix: RPServer
+authors: [ whbex ]
+description: RP-Stub server side plugin
