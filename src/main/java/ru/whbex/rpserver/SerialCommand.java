@@ -15,13 +15,18 @@ import java.util.List;
 public class SerialCommand extends BukkitCommand {
     public static final String NAME = "serial",
                                 DESCRIPTION = "Get player serial",
-                                USAGE = "Usage: /" + NAME + " <player>";
+                                USAGE = "Usage: /" + NAME + " <player>",
+                                PERMISSION = "rpserver.serial";
     public static final String[] ALIAS = {"getserial", "playerserial"};
     public SerialCommand(){
         super(NAME, DESCRIPTION, USAGE, Arrays.asList(ALIAS));
     }
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
+        if(!sender.hasPermission(PERMISSION)){
+            sender.sendMessage("You don't have permission to use this command!");
+            return true;
+        }
         boolean other = !(sender instanceof Player);
         if(args.length > 0)
             other = true;
