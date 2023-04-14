@@ -21,7 +21,7 @@ public final class Main extends JavaPlugin {
         Bukkit.getMessenger().registerOutgoingPluginChannel(this, CHANNEL_ID_OUTGOUING);
         Bukkit.getMessenger().registerIncomingPluginChannel(this, CHANNEL_ID_INCOMING, new IncomingListener());
         Bukkit.getPluginManager().registerEvents(new LoginListener(), this);
-        Util.registerBukkitCommand(new SerialCommand());
+        Util.registerBukkitCommand(this, new SerialCommand());
         getLogger().info("Startup done");
 
 

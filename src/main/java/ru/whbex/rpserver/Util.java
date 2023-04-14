@@ -5,18 +5,19 @@ import org.bukkit.command.CommandMap;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Util {
-    public static void registerBukkitCommand(BukkitCommand cmd){
+    public static void registerBukkitCommand(Plugin plugin, BukkitCommand cmd){
         try {
             Field cmdMapField = Bukkit.getServer().getClass().getDeclaredField("commandMap");
             cmdMapField.setAccessible(true);
             CommandMap cmdMap = (CommandMap) cmdMapField.get(Bukkit.getServer());
-            cmdMap.register(cmd.getName(), cmd);
+            cmdMap.register(plugin.getName(), cmd);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             Main.instance().getLogger().severe("Couldn't register command " + cmd.getName() + ": "  + e.getLocalizedMessage());
             e.printStackTrace();
