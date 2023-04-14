@@ -48,8 +48,8 @@ public class SerialCommand extends BukkitCommand {
             viewer.sendMessage(err);
             return true;
         }
-        String display = self ? "Your serial is " + Main.instance().getSerial(target) :
-                                "Target " + target.getName() + " serial is " + Main.instance().getSerial(target);
+        String display = self ? "Your serial is " + Main.instance().getSerial(target).trim() :
+                                "Target " + target.getName() + " serial is " + Main.instance().getSerial(target).trim();
         viewer.sendMessage(display);
         return true;
     }
